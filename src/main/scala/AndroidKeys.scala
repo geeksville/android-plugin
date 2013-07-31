@@ -24,6 +24,7 @@ object AndroidKeys {
 
   /** Default Settings */
   val aaptName = SettingKey[String]("aapt-name")
+  val aaptOptions = SettingKey[Seq[String]]("aapt-options")
   val adbName = SettingKey[String]("adb-name")
   val aidlName = SettingKey[String]("aidl-name")
   val dxName = SettingKey[String]("dx-name")

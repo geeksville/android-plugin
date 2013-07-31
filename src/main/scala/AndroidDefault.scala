@@ -7,6 +7,7 @@ import AndroidKeys._
 
 object AndroidDefaults {
   val DefaultAaaptName = "aapt"
+  val DefaultAaptOptions = Seq[String]()
   val DefaultAadbName = "adb"
   val DefaultAaidlName = "aidl"
   val DefaultDxName = "dx"
@@ -23,6 +24,7 @@ object AndroidDefaults {
 
   lazy val settings: Seq[Setting[_]] = Seq (
     aaptName := DefaultAaaptName,
+    aaptOptions := DefaultAaptOptions,
     adbName := DefaultAadbName,
     aidlName := DefaultAaidlName,
     dxName := DefaultDxName,

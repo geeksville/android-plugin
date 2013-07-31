@@ -23,8 +23,8 @@ object AndroidInstall {
   }
 
   private def aaptPackageTask: Project.Initialize[Task[File]] =
-  (aaptPath, manifestPath, resPath, mainAssetsPath, jarPath, resourcesApkPath, streams) map {
-    (apPath, manPath, rPath, assetPath, jPath, resApkPath, s) =>
+  (aaptPath, aaptOptions, manifestPath, resPath, mainAssetsPath, jarPath, resourcesApkPath, streams) map {
+    (apPath, apOptions, manPath, rPath, assetPath, jPath, resApkPath, s) =>
 
     val libraryResPathArgs = rPath.flatMap(p => Seq("-S", p.absolutePath))
 
@@ -32,7 +32,7 @@ object AndroidInstall {
         "-M", manPath.head.absolutePath,
         "-A", assetPath.absolutePath,
         "-I", jPath.absolutePath,
-        "-F", resApkPath.absolutePath) ++
+        "-F", resApkPath.absolutePath) ++ apOptions ++
         libraryResPathArgs
     s.log.debug("packaging: "+aapt.mkString(" "))
     if (aapt.run(false).exitValue != 0) sys.error("error packaging resources")
