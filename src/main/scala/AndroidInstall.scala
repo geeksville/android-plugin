@@ -166,7 +166,7 @@ object AndroidInstall {
     aaptPackage <<= aaptPackage dependsOn (makeAssetPath, dx),
     dx <<= dxTask,
     predexLibraries := false,
-    dxMemory := "-JXmx512m",
+    dxMemory := "-JXmx1024m",
     dxInputs <<=
       (proguard, skipScalaLibrary, proguardInJars, scalaInstance, classDirectory) map {
       (proguard, skipScalaLibrary, proguardInJars, scalaInstance, classDirectory) =>
