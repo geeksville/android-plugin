@@ -25,7 +25,7 @@ object AndroidMarketPublish {
       val jarsigner = Seq(
         "jarsigner",
         "-verbose",
-	"-sigalg", "MD5withRSA",
+	"-sigalg", "SHA1withDSA",
 	"-digestalg", "SHA1",
         "-keystore", ksPath.absolutePath,
         "-storepass", PasswordManager.get(
