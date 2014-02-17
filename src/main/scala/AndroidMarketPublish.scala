@@ -1,3 +1,5 @@
+package sbtandroid
+
 import sbt._
 
 import Keys._
@@ -23,6 +25,8 @@ object AndroidMarketPublish {
       val jarsigner = Seq(
         "jarsigner",
         "-verbose",
+	"-sigalg", "MD5withRSA",
+	"-digestalg", "SHA1",
         "-keystore", ksPath.absolutePath,
         "-storepass", PasswordManager.get(
               "keystore", ka, cache).getOrElse(sys.error("could not get password")),

@@ -1,3 +1,5 @@
+package sbtandroid
+
 import sbt._
 
 import Keys._
@@ -5,6 +7,7 @@ import AndroidKeys._
 
 object AndroidDefaults {
   val DefaultAaaptName = "aapt"
+  val DefaultAaptOptions = Seq[String]()
   val DefaultAadbName = "adb"
   val DefaultAaidlName = "aidl"
   val DefaultDxName = "dx"
@@ -15,12 +18,13 @@ object AndroidDefaults {
   val DefaultClassesMinJarName = "classes.min.jar"
   val DefaultClassesDexName = "classes.dex"
   val DefaultResourcesApkName = "resources.apk"
-  val DefaultDxOpts = ("-JXmx512m", None)
+  val DefaultGeneratedProguardConfigName = "proguard-generated.txt"
   val DefaultManifestSchema = "http://schemas.android.com/apk/res/android"
   val DefaultEnvs = List("ANDROID_SDK_HOME", "ANDROID_SDK_ROOT", "ANDROID_HOME")
 
   lazy val settings: Seq[Setting[_]] = Seq (
     aaptName := DefaultAaaptName,
+    aaptOptions := DefaultAaptOptions,
     adbName := DefaultAadbName,
     aidlName := DefaultAaidlName,
     dxName := DefaultDxName,
@@ -31,7 +35,7 @@ object AndroidDefaults {
     classesMinJarName := DefaultClassesMinJarName,
     classesDexName := DefaultClassesDexName,
     resourcesApkName := DefaultResourcesApkName,
-    dxOpts := DefaultDxOpts,
+    generatedProguardConfigName := DefaultGeneratedProguardConfigName,
     manifestSchema := DefaultManifestSchema,
     envs := DefaultEnvs,
     // a list of modules which are already included in Android
